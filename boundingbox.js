@@ -11,6 +11,19 @@ var CircleTool = new Tool();
 var VectorTool = new Tool();
 var ImageTool = new Tool();
 
+
+function BBHandle(size){
+	// return path;
+}
+
+// path or shape
+function BoundingBox(path){
+	//basically draw 8 rectangles
+	// 4 lines
+	// and attach hanlers to the 8 rects
+	// and somehow attach the rect group to the path and show it on click
+}
+
 window.onload = function() {
 
 	// Setup directly from canvas id:
@@ -47,7 +60,7 @@ window.onload = function() {
 			if(hitResult){
 				if(hitResult.segment){
 					segm = hitResult.segment;
-					segm.selected = true;						
+					// segm.selected = true;						
 				}
 
 			}else{
@@ -98,8 +111,8 @@ window.onload = function() {
 
 	RectangleTool.onMouseUp = function(event) {
 		path.closed = true;
-		path.selected = true;	
-		path.fullySelected = true;	
+		// path.selected = true;	
+		// path.fullySelected = true;	
 		
 		delesectAllPaths();
 		
@@ -123,7 +136,7 @@ window.onload = function() {
 				p.selected = false;
 			});
 
-			this.selected = true;
+			// this.selected = true;
 			this.bringToFront();
 		});	
 
@@ -141,6 +154,19 @@ window.onload = function() {
 		path.attach('mouseup', function(e) {
 			pathsMoving = false;
 		})
+
+		path.attach('mouseenter', function(e) {
+			this.style = {
+			    strokeColor: '#4cc1fc',
+			    strokeWidth: 2
+			};
+		});		
+
+		path.attach('mouseleave', function(e) {
+			this.style = {
+			    strokeWidth: 0
+			};
+		});			
 
 		// RectangleTool.remove();		
 		SelectorTool.activate();
